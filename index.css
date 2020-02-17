@@ -1,0 +1,11 @@
+body {
+    background-color: cornsilk;
+}
+
+#gameContainer {
+    width: 800px;
+    height: 800px;
+    margin-left: calc(50vw - 800px / 2);
+    margin-top: calc(50vh - 800px / 2);
+    border: 1px solid black;
+}
