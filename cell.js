@@ -2,7 +2,7 @@ class Cell {
     position = Vector2D.Zero;
     dimension = Dimension.Zero;
     drawingContext;
-    color = "white";
+    color = "gray";
     absoluteX = 0;
     absoluteY = 0;
 
@@ -12,6 +12,8 @@ class Cell {
         this.dimension.width = w;
         this.dimension.height = h;
         this.drawingContext = ctx;
+        this.absoluteX = x * w;
+        this.absoluteY = y * h;
     }
 
     draw() {
@@ -31,6 +33,11 @@ class Cell {
                 this.dimension.width,
                 this.dimension.height);
         }
+    }
+
+    update() {
+        this.absoluteX = this.position.x * this.dimension.width;
+        this.absoluteX = this.position.y * this.dimension.height;
     }
 
 }
