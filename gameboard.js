@@ -23,18 +23,17 @@ class GameBoard {
 
         this.cellSize = this.canvasSize / this.size;
 
-        this.attachEventHandlers();
-
         this.snake = new Snake(4, 20, this.cellSize, this.cellSize, this.drawingContext);
         this.gameObjects.push(this.snake);
 
 
         setInterval(this.draw, 1000 / this.maxFPS);
-
+        setInterval(this.update, this.gameSpeed);
 
         this.generateCells();
         this.generateFood();
-        console.log(this.gameObjects);
+
+        this.attachEventHandlers();
     }
 
 
@@ -44,15 +43,15 @@ class GameBoard {
 
     onArrowKeysPressed = (e) => {
         let key = e.KeyCode;
-        if (key == 37 && this.snake.keyDirection != 'R')
-            this.snake.keyDirection = 'L';
-        if (key == 38 && this.snake.keyDirection != "D")
-            this.snake.keyDirection = 'U';
-        if (key == 39 && this.snake.keyDirection != "L")
-            this.snake.keyDirection = 'R';
-        if (key == 40 && this.snake.keyDirection != "U")
-            this.snake.keyDirection = 'D';
-
+        console.log(e.KeyCode);
+        if (key == 37)
+            this.snake.move("L");
+        if (key == 38)
+            this.snake.move("U");
+        if (key == 39)
+            this.snake.move("R");
+        if (key == 40)
+            this.snake.move("D");
     }
 
     generateCells = () => {
@@ -103,8 +102,9 @@ class GameBoard {
     }
 
     snakeHasEatenTheFood = () => {
-        if (this.snake[0].position.x = this.food.position.x && this.snake[0].position.y == this.food.position.y) {
-            alert("kaon na");
+        if (this.snake.head.position.x == this.food.position.x &&
+            this.snake.head.position.y == this.food.position.y) {
+            // this.snake.eat();
             this.generateFood();
         }
     }

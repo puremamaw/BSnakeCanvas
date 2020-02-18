@@ -12,8 +12,6 @@ class Cell {
         this.dimension.width = w;
         this.dimension.height = h;
         this.drawingContext = ctx;
-        this.absoluteX = x * w;
-        this.absoluteY = y * h;
     }
 
     draw() {
@@ -37,7 +35,7 @@ class Cell {
 
     update() {
         this.absoluteX = this.position.x * this.dimension.width;
-        this.absoluteX = this.position.y * this.dimension.height;
+        this.absoluteY = this.position.y * this.dimension.height;
     }
 
 }
